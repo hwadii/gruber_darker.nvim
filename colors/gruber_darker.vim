@@ -14,8 +14,8 @@ let g:colors_name="gruber_darker"
 "
 " The performance impact of this call can be measured in the hundreds of
 " *nanoseconds* and such could be considered "production safe".
-lua package.loaded['lush_theme.gruber_darker'] = nil
+lua package.loaded['gruber_darker'] = nil
 
 " include our theme file and pass it to lush to apply
-lua require('lush')(require('lush_theme.gruber_darker'))
+lua require('lush')(require('gruber_darker'))
 
