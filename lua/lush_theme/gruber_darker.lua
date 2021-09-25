@@ -156,7 +156,7 @@ local theme = lush(function()
     Boolean        { Constant }, --  a boolean constant: TRUE, false
     Float          { Number }, --    a floating point constant: 2.3e10
 
-    Identifier     { fg = fg_light }, -- (preferred) any variable name
+    Identifier     { fg = Constant.fg.li(50) }, -- (preferred) any variable name
     Function       { fg = niagara }, -- function name (also: methods for classes)
 
     Statement      { fg = yellow }, -- (preferred) any statement
