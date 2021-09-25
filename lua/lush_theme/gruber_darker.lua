@@ -101,7 +101,7 @@ local theme = lush(function()
     -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
-    ErrorMsg     { bg = red }, -- error messages on the command line
+    ErrorMsg     { fg = red_dark }, -- error messages on the command line
     VertSplit    { bg = bg_dark, fg = bg2 }, -- the column separating vertically split windows
     Folded       { bg = bg_light, fg = bg4 }, -- line used for closed folds
     -- FoldColumn   { }, -- 'foldcolumn'
@@ -125,7 +125,7 @@ local theme = lush(function()
     PmenuThumb   { bg = bg_dark }, -- Popup menu: Thumb of the scrollbar.
     -- Question     { }, -- |hit-enter| prompt and yes/no questions
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search       { fg = black, bg = fg_lighter }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search       { bg = bg4 }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad     { fg = red, gui = "bold,underline" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
     SpellCap     { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -289,6 +289,8 @@ local theme = lush(function()
     -- TSLiteral            { };    -- Literal text.
     -- TSURI                { };    -- Any URI like a link or email.
 
+    diffAdded { DiffAdd },
+    diffRemoved { DiffDelete },
   }
 end)
 
