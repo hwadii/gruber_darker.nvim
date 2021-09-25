@@ -291,6 +291,11 @@ local theme = lush(function()
 
     diffAdded { DiffAdd },
     diffRemoved { DiffDelete },
+
+    DiagnosticError { fg = red_light },
+    DiagnosticWarn  { fg = brown },
+    DiagnosticInfo  { fg = quartz },
+    DiagnosticHint  { fg = green },
   }
 end)
 
