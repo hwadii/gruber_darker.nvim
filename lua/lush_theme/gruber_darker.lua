@@ -45,6 +45,29 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
+local fg = hsl(240, 25, 91)
+local fg_light = hsl(240, 100, 97)
+local fg_lighter = hsl(0, 0, 96)
+local white = hsl(0, 0, 100)
+local black = hsl(0, 0, 0)
+local bg_dark = hsl(0, 0, 6)
+local bg = hsl(0, 0, 9)
+local bg_light = hsl(0, 0, 15)
+local bg2 = hsl(330, 6, 25)
+local bg3 = hsl(0, 0, 28)
+local bg4 = hsl(327, 5, 30)
+local red_dark = hsl(359, 55, 50)
+local red = hsl(357, 89, 58)
+local red_light = hsl(357, 100, 65)
+local green = hsl(95, 57, 50)
+local yellow = hsl(50, 100, 60)
+local brown = hsl(33, 58, 51)
+local quartz = hsl(150, 10, 62)
+local niagara_darker = hsl(221, 14, 22)
+local niagara_dark = hsl(221, 14, 39)
+local niagara = hsl(221, 31, 68)
+local wisteria = hsl(251, 30, 68)
+
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
@@ -62,62 +85,62 @@ local theme = lush(function()
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    -- Comment      { }, -- any comment
+    Comment      { fg = brown, gui = "italic" }, -- any comment
     -- ColorColumn  { }, -- used for the columns set with 'colorcolumn'
-    -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
-    -- Cursor       { }, -- character under the cursor
+    Conceal      { fg = niagara_dark }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Cursor       { fg = yellow }, -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
     -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    -- CursorLine   { }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    -- Directory    { }, -- directory names (and other special names in listings)
-    -- DiffAdd      { }, -- diff mode: Added line |diff.txt|
-    -- DiffChange   { }, -- diff mode: Changed line |diff.txt|
-    -- DiffDelete   { }, -- diff mode: Deleted line |diff.txt|
-    -- DiffText     { }, -- diff mode: Changed text within a changed line |diff.txt|
+    CursorLine   { bg = bg_light }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    Directory    { fg = niagara, gui = "bold" }, -- directory names (and other special names in listings)
+    DiffAdd      { fg = green }, -- diff mode: Added line |diff.txt|
+    DiffChange   { fg = wisteria }, -- diff mode: Changed line |diff.txt|
+    DiffDelete   { fg = red_dark }, -- diff mode: Deleted line |diff.txt|
+    DiffText     { bg = red_dark }, -- diff mode: Changed text within a changed line |diff.txt|
     -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
-    -- ErrorMsg     { }, -- error messages on the command line
-    -- VertSplit    { }, -- the column separating vertically split windows
-    -- Folded       { }, -- line used for closed folds
+    ErrorMsg     { bg = red }, -- error messages on the command line
+    VertSplit    { bg = bg_dark, fg = bg2 }, -- the column separating vertically split windows
+    Folded       { bg = bg_light, fg = bg4 }, -- line used for closed folds
     -- FoldColumn   { }, -- 'foldcolumn'
-    -- SignColumn   { }, -- column where |signs| are displayed
-    -- IncSearch    { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    SignColumn   { }, -- column where |signs| are displayed
+    IncSearch    { fg = fg_light, bg = niagara_dark }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute   { }, -- |:substitute| replacement text highlighting
-    -- LineNr       { }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    -- CursorLineNr { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    -- MatchParen   { }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    LineNr       { fg = bg3 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr { fg = yellow }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    MatchParen   { bg = bg4 }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg      { }, -- |more-prompt|
-    -- NonText      { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    -- Normal       { }, -- normal text
-    -- NormalFloat  { }, -- Normal text in floating windows.
+    NonText      { fg = bg2 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal       { fg = fg, bg = bg }, -- normal text
+    NormalFloat  { Normal }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    -- Pmenu        { }, -- Popup menu: normal item.
-    -- PmenuSel     { }, -- Popup menu: selected item.
-    -- PmenuSbar    { }, -- Popup menu: scrollbar.
-    -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
+    Pmenu        { fg = fg, bg = bg_light }, -- Popup menu: normal item.
+    PmenuSel     { fg = fg, bg = bg_dark }, -- Popup menu: selected item.
+    PmenuSbar    { bg = bg2 }, -- Popup menu: scrollbar.
+    PmenuThumb   { bg = bg_dark }, -- Popup menu: Thumb of the scrollbar.
     -- Question     { }, -- |hit-enter| prompt and yes/no questions
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    -- Search       { }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search       { fg = black, bg = fg_lighter }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
-    -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellBad     { fg = red, gui = "bold,underline" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
+    SpellCap     { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal   { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare    { }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-    -- StatusLine   { }, -- status line of current window
-    -- StatusLineNC { }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    -- TabLine      { }, -- tab pages line, not active tab page label
-    -- TabLineFill  { }, -- tab pages line, where there are no labels
-    -- TabLineSel   { }, -- tab pages line, active tab page label
-    -- Title        { }, -- titles for output from ":set all", ":autocmd" etc.
-    -- Visual       { }, -- Visual mode selection
+    StatusLine   { }, -- status line of current window
+    StatusLineNC { bg = bg_light, fg = quartz }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    TabLine      { Pmenu }, -- tab pages line, not active tab page label
+    TabLineFill  { }, -- tab pages line, where there are no labels
+    TabLineSel   { PmenuSel }, -- tab pages line, active tab page label
+    Title        { fg = wisteria}, -- titles for output from ":set all", ":autocmd" etc.
+    Visual       { bg = bg3 }, -- Visual mode selection
     -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
-    -- WarningMsg   { }, -- warning messages
-    -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    WarningMsg   { fg = red }, -- warning messages
+    Whitespace   { fg = bg2 }, -- "nbsp", "space", "tab" and "trail" in 'listchars"
     -- WildMenu     { }, -- current match in 'wildmenu' completion
 
     -- These groups are not listed as default vim groups,
@@ -126,36 +149,36 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    -- Constant       { }, -- (preferred) any constant
-    -- String         { }, --   a string constant: "this is a string"
-    -- Character      { }, --  a character constant: 'c', '\n'
-    -- Number         { }, --   a number constant: 234, 0xff
-    -- Boolean        { }, --  a boolean constant: TRUE, false
-    -- Float          { }, --    a floating point constant: 2.3e10
+    Constant       { fg = quartz }, -- (preferred) any constant
+    String         { fg = green }, --   a string constant: "this is a string"
+    Character      { fg = wisteria }, --  a character constant: 'c', '\n'
+    Number         { Character }, --   a number constant: 234, 0xff
+    Boolean        { Constant }, --  a boolean constant: TRUE, false
+    Float          { Number }, --    a floating point constant: 2.3e10
 
-    -- Identifier     { }, -- (preferred) any variable name
-    -- Function       { }, -- function name (also: methods for classes)
+    Identifier     { fg = fg_light }, -- (preferred) any variable name
+    Function       { fg = niagara }, -- function name (also: methods for classes)
 
-    -- Statement      { }, -- (preferred) any statement
-    -- Conditional    { }, --  if, then, else, endif, switch, etc.
-    -- Repeat         { }, --   for, do, while, etc.
-    -- Label          { }, --    case, default, etc.
-    -- Operator       { }, -- "sizeof", "+", "*", etc.
-    -- Keyword        { }, --  any other keyword
-    -- Exception      { }, --  try, catch, throw
+    Statement      { fg = yellow }, -- (preferred) any statement
+    Conditional    { Statement }, --  if, then, else, endif, switch, etc.
+    Repeat         { Statement }, --   for, do, while, etc.
+    Label          { Statement }, --    case, default, etc.
+    Operator       { fg = brown }, -- "sizeof", "+", "*", etc.
+    Keyword        { Statement, gui = "bold" }, --  any other keyword
+    Exception      { Statement }, --  try, catch, throw
 
-    -- PreProc        { }, -- (preferred) generic Preprocessor
+    PreProc        { fg = quartz }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    -- Type           { }, -- (preferred) int, long, char, etc.
+    Type           { fg = quartz }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    -- Special        { }, -- (preferred) any special symbol
+    Special        { fg = brown }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
     -- Delimiter      { }, --  character that needs attention
@@ -169,9 +192,9 @@ local theme = lush(function()
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
 
-    -- Error          { }, -- (preferred) any erroneous construct
+    Error          { fg = red }, -- (preferred) any erroneous construct
 
-    -- Todo           { }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo           { fg = red_dark }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
