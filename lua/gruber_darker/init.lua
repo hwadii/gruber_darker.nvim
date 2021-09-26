@@ -117,7 +117,7 @@ local theme = lush(function()
     -- MoreMsg      { }, -- |more-prompt|
     NonText      { fg = bg2 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal       { fg = fg, bg = bg }, -- normal text
-    NormalFloat  { Normal }, -- Normal text in floating windows.
+    NormalFloat  { Normal, bg = bg_light }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
     Pmenu        { fg = fg, bg = bg_light }, -- Popup menu: normal item.
     PmenuSel     { fg = fg, bg = bg_dark }, -- Popup menu: selected item.
@@ -136,7 +136,7 @@ local theme = lush(function()
     TabLine      { Pmenu }, -- tab pages line, not active tab page label
     TabLineFill  { }, -- tab pages line, where there are no labels
     TabLineSel   { PmenuSel }, -- tab pages line, active tab page label
-    Title        { fg = wisteria}, -- titles for output from ":set all", ":autocmd" etc.
+    Title        { fg = wisteria }, -- titles for output from ":set all", ":autocmd" etc.
     Visual       { bg = bg3 }, -- Visual mode selection
     -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg   { fg = red }, -- warning messages
@@ -267,8 +267,8 @@ local theme = lush(function()
     -- TSParameterReference { };    -- For references to parameters of a function.
     -- TSProperty           { };    -- Same as `TSField`.
     -- TSPunctDelimiter     { };    -- For delimiters ie: `.`
-    -- TSPunctBracket       { };    -- For brackets and parens.
-    -- TSPunctSpecial       { };    -- For special punctutation that does not fall in the catagories before.
+    TSPunctBracket       { fg = fg };    -- For brackets and parens.
+    TSPunctSpecial       { fg = fg };    -- For special punctutation that does not fall in the catagories before.
     -- TSRepeat             { };    -- For keywords related to loops.
     -- TSString             { };    -- For strings.
     -- TSStringRegex        { };    -- For regexes.
