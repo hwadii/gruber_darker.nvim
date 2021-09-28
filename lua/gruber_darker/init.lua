@@ -50,12 +50,12 @@ local fg_light = hsl(240, 100, 97)
 local fg_lighter = hsl(0, 0, 96)
 local white = hsl(0, 0, 100)
 local black = hsl(0, 0, 0)
-local bg_dark = hsl(0, 0, 6)
-local bg = hsl(0, 0, 9)
-local bg_light = hsl(0, 0, 15)
-local bg2 = hsl(330, 6, 25)
-local bg3 = hsl(0, 0, 28)
-local bg4 = hsl(327, 5, 30)
+local bg_dark = hsl(240, 14, 5)
+local bg = hsl(240, 14, 10)
+local bg_light = hsl(240, 14, 15)
+local bg2 = hsl(240, 14, 17)
+local bg3 = hsl(240, 14, 28)
+local bg4 = hsl(240, 14, 31)
 local red_dark = hsl(359, 55, 50)
 local red = hsl(357, 89, 58)
 local red_light = hsl(357, 100, 65)
@@ -125,7 +125,7 @@ local theme = lush(function()
     PmenuThumb   { bg = bg_dark }, -- Popup menu: Thumb of the scrollbar.
     -- Question     { }, -- |hit-enter| prompt and yes/no questions
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search       { fg = fg_light, bg = bg4 }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search       { fg = fg_light, bg = bg3 }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SpecialKey   { fg = niagara_dark }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad     { fg = red, gui = "bold,underline" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
     SpellCap     { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -137,10 +137,10 @@ local theme = lush(function()
     TabLineFill  { }, -- tab pages line, where there are no labels
     TabLineSel   { PmenuSel }, -- tab pages line, active tab page label
     Title        { fg = wisteria }, -- titles for output from ":set all", ":autocmd" etc.
-    Visual       { bg = bg3 }, -- Visual mode selection
+    Visual       { bg = bg2 }, -- Visual mode selection
     -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg   { fg = red }, -- warning messages
-    Whitespace   { fg = bg2 }, -- "nbsp", "space", "tab" and "trail" in 'listchars"
+    Whitespace   { fg = bg4 }, -- "nbsp", "space", "tab" and "trail" in 'listchars"
     -- WildMenu     { }, -- current match in 'wildmenu' completion
 
     -- These groups are not listed as default vim groups,

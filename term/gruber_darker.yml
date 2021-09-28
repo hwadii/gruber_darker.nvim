@@ -1,14 +1,14 @@
 colors:
   primary:
     foreground: '#e4e4ef'
-    background: '#181818'
+    background: '#16161D'
 
   cursor:
     text: '#181818'
     cursor: '#ffdd33'
 
   normal:
-    black: '#181818'
+    black: '#16161D'
     white: '#b1bac4'
     red: '#c73c3f'
     green: '#73c936'
