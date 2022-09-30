@@ -1,5 +1,4 @@
 # Gruber Darker for Neovim
-===
 ## Installation
 You can install this theme with your package manager of choice.
 ```lua
